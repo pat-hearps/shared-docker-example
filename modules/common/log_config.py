@@ -30,4 +30,7 @@ def get_logger(name: str, level: Union[str, int] = logging.DEBUG) -> logging.Log
 
 def show_location(here: Path) -> None:
     for path in here.parent.iterdir():
-        print(path, "\n", pformat([p for p in path.iterdir() if "__" not in p.stem]))
+        if path.is_dir():
+            print(path, " (DIR) contains:\n", pformat([p for p in path.iterdir() if "__" not in p.stem]))
+        else:
+            print(path)
