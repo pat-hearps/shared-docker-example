@@ -1,6 +1,6 @@
 from pathlib import Path
 
-from modules.common.log_config import get_logger, show_location
+from common.log_config import get_logger, show_location
 
 logger = get_logger(__name__)
 
