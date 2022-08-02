@@ -1,4 +1,6 @@
 import logging
+from pathlib import Path
+from pprint import pformat
 import sys
 from typing import Union
 
@@ -24,3 +26,8 @@ def get_logger(name: str, level: Union[str, int] = logging.DEBUG) -> logging.Log
     logger.setLevel(level)
     logger.addHandler(stream_handler)
     return logger
+
+
+def show_location(here: Path) -> None:
+    for path in here.parent.iterdir():
+        print(path, "\n", pformat([p for p in path.iterdir() if "__" not in p.stem]))
