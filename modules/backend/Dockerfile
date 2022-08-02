@@ -1,6 +1,8 @@
 FROM python:3.9.11-alpine3.15
 
-COPY ./common/ modules/common/
-COPY ./backend/ modules/backend/
+WORKDIR /modules
 
-CMD python -m modules.backend.main_backend
+COPY ./common/ ./common/
+COPY ./backend/ ./backend/
+
+CMD python -m backend.main_backend
